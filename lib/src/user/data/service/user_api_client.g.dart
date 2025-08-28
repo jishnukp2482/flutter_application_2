@@ -18,12 +18,12 @@ class _UserApiClient implements UserApiClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<FetchAllUserResponse> fetchAllusers() async {
+  Future<List<FetchAllUserResponse>> fetchAllusers() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<FetchAllUserResponse>(
+    final _options = _setStreamType<List<FetchAllUserResponse>>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -33,10 +33,15 @@ class _UserApiClient implements UserApiClient {
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late FetchAllUserResponse _value;
+    final _result = await _dio.fetch<List<dynamic>>(_options);
+    late List<FetchAllUserResponse> _value;
     try {
-      _value = FetchAllUserResponse.fromJson(_result.data!);
+      _value = _result.data!
+          .map(
+            (dynamic i) =>
+                FetchAllUserResponse.fromJson(i as Map<String, dynamic>),
+          )
+          .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

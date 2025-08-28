@@ -15,7 +15,7 @@ class UserProvider extends _$UserProvider {
     try {
       final fetchAllUsersUsecase = ref.read(getFetchAllUsersUsecaseProvider);
       var result = await fetchAllUsersUsecase.build();
-      state = state.copyWith(isLoading: false, fetchAllUserResponse: [result]);
+      state = state.copyWith(isLoading: false, fetchAllUserResponse: result);
     } catch (e) {
       state = state.copyWith(
         isLoading: false,

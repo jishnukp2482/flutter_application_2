@@ -47,12 +47,12 @@ class AllUserListItem extends StatelessWidget {
     );
   }
 
-  _buildDataRow(String title, String value) {
-    Row(
+  Widget _buildDataRow(String title, String value) {
+    return Row(
       children: [
-        Expanded(child: Text(title)),
+        Expanded(child: Text(title ?? "")),
         Expanded(child: Center(child: Text(":"))),
-        Expanded(child: Text(value)),
+        Expanded(child: Text(value ?? "")),
       ],
     );
   }

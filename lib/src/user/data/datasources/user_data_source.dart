@@ -6,7 +6,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'user_data_source.g.dart';
 
 abstract class UserDataSource {
-  Future<FetchAllUserResponse> fetchAllusers();
+  Future<List<FetchAllUserResponse>> fetchAllusers();
 }
 
 class UserDataSourceImpl extends UserDataSource {
@@ -15,7 +15,7 @@ class UserDataSourceImpl extends UserDataSource {
   UserDataSourceImpl(this.userApiClient);
 
   @override
-  Future<FetchAllUserResponse> fetchAllusers() async {
+  Future<List<FetchAllUserResponse>> fetchAllusers() async {
     return await userApiClient.fetchAllusers();
   }
 }

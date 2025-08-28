@@ -11,7 +11,7 @@ part 'user_api_client.g.dart';
 abstract class UserApiClient {
   factory UserApiClient(Dio dio, {String? baseUrl}) = _UserApiClient;
   @GET(AppRemoteRoutes.fetchAllUsers)
-  Future<FetchAllUserResponse> fetchAllusers();
+  Future<List<FetchAllUserResponse>> fetchAllusers();
 }
 
 @riverpod

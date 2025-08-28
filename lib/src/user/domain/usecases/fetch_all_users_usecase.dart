@@ -9,7 +9,7 @@ class FetchAllUsersUsecase {
   final UserRepository userRepository;
 
   FetchAllUsersUsecase(this.userRepository);
-  Future<FetchAllUserResponse> build() {
+  Future<List<FetchAllUserResponse>> build() {
     return userRepository.fetchAllusers();
   }
 }
